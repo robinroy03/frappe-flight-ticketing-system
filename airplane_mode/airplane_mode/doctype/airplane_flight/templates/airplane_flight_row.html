@@ -1,0 +1,20 @@
+{% set airline_name = frappe.db.get_value("Airplane", doc.airplane, "airline") %}
+
+<div class="row list-item" style="padding: 15px; border-bottom: 1px solid #eee;">
+    
+    <div class="col-8">
+        <h4>Flight: {{ doc.source_airport_code }} to {{ doc.destination_airport_code }}</h4>
+        
+        <p><strong>Airline:</strong> {{ airline_name }}</p>
+        <p>
+            <strong>Date:</strong> {{ frappe.utils.format_date(doc.date_of_departure, "d MMMM, YYYY") }}
+            at {{ doc.time_of_departure }}
+        </p>
+        <p><strong>Duration:</strong> {{ frappe.utils.format_duration(doc.duration) }}</p>
+    </div>
+    
+    <div class="col-4 d-flex align-items-center justify-content-end">
+        
+        <a href="/{{ doc.route }}" class="btn btn-primary">View Flight</a>
+    </div>
+</div>

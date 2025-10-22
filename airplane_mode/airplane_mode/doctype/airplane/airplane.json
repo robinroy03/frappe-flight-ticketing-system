@@ -35,8 +35,13 @@
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2025-10-21 22:25:29.856830",
+ "links": [
+  {
+   "link_doctype": "Airplane Flight",
+   "link_fieldname": "Airplane"
+  }
+ ],
+ "modified": "2025-10-22 03:19:20.036821",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane",
