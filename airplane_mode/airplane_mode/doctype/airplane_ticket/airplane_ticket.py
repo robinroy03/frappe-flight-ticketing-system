@@ -37,3 +37,24 @@ class AirplaneTicket(Document):
 		random_int = random.randint(1, 99)
 		random_char = random.choice("ABCDE")
 		self.seat = f"{random_int}{random_char}"
+
+		self.check_flight_capacity()
+
+	def check_flight_capacity(self):
+		flight = frappe.get_doc("Airplane Flight", self.flight)
+		airplane_name = flight.airplane
+
+		capacity = frappe.db.get_value("Airplane", airplane_name, "capacity")
+
+		existing_tickets_count = frappe.db.count(
+			"Airplane Ticket",
+			{
+				"flight": self.flight,
+				"docstatus": ("!=", 2),  # Exclude docstatus 2 (Cancelled)
+			},
+		)
+
+		if existing_tickets_count >= capacity:
+			frappe.throw(
+				f"Cannot create ticket: Flight {self.flight} is already full (Capacity: {capacity})."
+			)
