@@ -19,7 +19,8 @@
   "source_airport_code",
   "destination_airport_code",
   "is_published",
-  "route"
+  "route",
+  "crew_members"
  ],
  "fields": [
   {
@@ -108,6 +109,12 @@
    "fieldname": "is_published",
    "fieldtype": "Check",
    "label": "Is Published"
+  },
+  {
+   "fieldname": "crew_members",
+   "fieldtype": "Table",
+   "label": "Crew Members",
+   "options": "Flight Crew Assignment"
   }
  ],
  "grid_page_length": 50,
@@ -116,69 +123,13 @@
  "is_published_field": "is_published",
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-23 00:00:30.649447",
+ "modified": "2025-10-23 02:06:12.939002",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",
  "naming_rule": "Expression",
  "owner": "Administrator",
- "permissions": [
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "share": 1,
-   "submit": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Fleet Manager",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Travel Agent",
-   "share": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Airport Authority Personnel",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Flight Crew Member",
-   "share": 1
-  }
- ],
+ "permissions": [],
  "route": "flights",
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
