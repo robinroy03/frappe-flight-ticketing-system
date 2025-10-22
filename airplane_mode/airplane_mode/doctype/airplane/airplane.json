@@ -8,7 +8,8 @@
  "field_order": [
   "model",
   "airline",
-  "capacity"
+  "capacity",
+  "initial_audit_completed"
  ],
  "fields": [
   {
@@ -31,6 +32,14 @@
    "label": "Capacity",
    "non_negative": 1,
    "reqd": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "frappe.user.has_role(\"Airport Authority Personnel\")",
+   "fieldname": "initial_audit_completed",
+   "fieldtype": "Check",
+   "label": "Initial Audit Completed",
+   "read_only_depends_on": "!frappe.user.has_role(\"Airport Authority Personnel\")"
   }
  ],
  "grid_page_length": 50,
@@ -41,7 +50,7 @@
    "link_fieldname": "Airplane"
   }
  ],
- "modified": "2025-10-22 03:19:20.036821",
+ "modified": "2025-10-22 23:37:02.782389",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane",
