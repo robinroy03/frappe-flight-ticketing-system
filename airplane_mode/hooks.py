@@ -148,6 +148,11 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
+scheduler_events = {
+	"monthly": [
+		"airplane_mode.airplane_mode.airport_shop_management.utils.shop_reminders.send_rent_reminders"
+	]
+}
 # scheduler_events = {
 # 	"all": [
 # 		"airplane_mode.tasks.all"
@@ -241,4 +246,3 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-

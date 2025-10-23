@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_guest_to_view": 1,
  "allow_rename": 1,
  "creation": "2025-10-23 02:47:54.700383",
  "doctype": "DocType",
@@ -13,7 +14,9 @@
   "tenant_name",
   "tenant_email",
   "rent_amount",
-  "contract_expiry_date"
+  "contract_expiry_date",
+  "route",
+  "published"
  ],
  "fields": [
   {
@@ -68,12 +71,26 @@
    "fieldname": "contract_expiry_date",
    "fieldtype": "Date",
    "label": "Contract Expiry Date"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "label": "Published"
   }
  ],
  "grid_page_length": 50,
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_published_field": "published",
  "links": [],
- "modified": "2025-10-23 02:52:40.217857",
+ "modified": "2025-10-23 15:09:40.898123",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Shop",
@@ -92,6 +109,7 @@
    "write": 1
   }
  ],
+ "route": "route",
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
