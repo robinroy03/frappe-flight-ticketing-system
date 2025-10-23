@@ -1,19 +1,56 @@
-{% block head %}
-<link rel="stylesheet" href="{{ '/assets/airplane_mode/css/custom.css' | abs_url }}">
-{% endblock %}
-
-{% block page_content %}
-<h1>{{ title }}</h1>
-
-<h3>Shop Details</h3>
-<p>Shop Number: {{ doc.shop_number }}</p>
-<p>Airport: {{ doc.airport }}</p>
-<p>Area (sq.ft): {{ doc.area }}</p>
-<p>Status: {{ doc.status }}</p>
-<p>Tenant: {{ doc.tenant or None }}</p>
-<p>Rent Amount: {{ doc.rent_amount }}</p>
-
-{% if doc.status == "Available" %}
-<a class="btn btn-info" href="http://course2.localhost/shop-leads/new?shop={{ doc.name }}">Enquire</a>
-{% endif %}
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ doc.shop_name or title }} - Shop Details</title>
+    <link rel="stylesheet" href="/assets/airplane_mode/css/custom.css">
+</head>
+<body>
+    <nav>
+        <a href="/shops" class="brand">
+            <span>Airport Shops</span>
+        </a>
+        <div class="menu">
+            <a href="/shops">All Shops</a>
+        </div>
+    </nav>
+    
+    <main style="margin-top: 4em; padding: 2em;">
+        <article class="card">
+            <header>
+                <h1>{{ doc.shop_name or title }}</h1>
+            </header>
+            <section>
+                <div class="flex two">
+                    <div>
+                        <p><strong>Shop Number:</strong> {{ doc.shop_number or 'N/A' }}</p>
+                        <p><strong>Airport:</strong> {{ doc.airport }}</p>
+                        <p><strong>Area:</strong> {{ doc.area }} sq.ft</p>
+                    </div>
+                    <div>
+                        <p><strong>Status:</strong> 
+                            {% if doc.status == "Available" %}
+                                <span class="label success">{{ doc.status }}</span>
+                            {% else %}
+                                <span class="label error">{{ doc.status }}</span>
+                            {% endif %}
+                        </p>
+                        <p><strong>Tenant:</strong> {{ doc.tenant_name or 'None' }}</p>
+                        <p><strong>Rent Amount:</strong> {{ doc.rent_amount }}</p>
+                    </div>
+                </div>
+            </section>
+            {% if doc.status == "Available" %}
+            <footer>
+                <a class="button success" href="/shop-leads/new?shop={{ doc.name }}">Enquire About This Shop</a>
+            </footer>
+            {% endif %}
+        </article>
+        
+        <div style="margin-top: 1em;">
+            <a href="/shops">← Back to All Shops</a>
+        </div>
+    </main>
+</body>
+</html>

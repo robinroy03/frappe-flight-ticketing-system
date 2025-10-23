@@ -1,4 +1,31 @@
-<div>
-	<a href="{{ doc.route }}">{{ doc.title or doc.name }}</a>
-</div>
-<!-- this is a sample default list template -->
+<article class="card">
+    <header>
+        <h3 style="margin: 0;">{{ doc.shop_name }}</h3>
+    </header>
+    <section>
+        <div class="flex three">
+            <div>
+                <small><strong>Airport:</strong></small><br>
+                {{ doc.airport }}
+            </div>
+            <div>
+                <small><strong>Area:</strong></small><br>
+                {{ doc.area }} sq.ft
+            </div>
+            <div>
+                <small><strong>Status:</strong></small><br>
+                {% if doc.status == "Available" %}
+                    <span class="label success">{{ doc.status }}</span>
+                {% else %}
+                    <span class="label error">{{ doc.status }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <footer>
+        <a class="button" href="{{ doc.route }}">View Details</a>
+        {% if doc.status == "Available" %}
+            <a class="button success" href="/shop-leads/new?shop={{ doc.name }}">Enquire</a>
+        {% endif %}
+    </footer>
+</article>

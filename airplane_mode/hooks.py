@@ -250,3 +250,5 @@ scheduler_events = {
 fixtures = [
 	"Shop Type",
 ]
+
+web_include_css = "/assets/airplane_mode/css/custom.css"
