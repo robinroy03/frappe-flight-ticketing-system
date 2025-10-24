@@ -118,6 +118,7 @@
    "options": "Flight Crew Assignment"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "gate_number",
    "fieldtype": "Data",
    "label": "Gate Number"
@@ -129,7 +130,7 @@
  "is_published_field": "is_published",
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-23 14:30:06.294379",
+ "modified": "2025-10-24 13:45:29.774646",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",
