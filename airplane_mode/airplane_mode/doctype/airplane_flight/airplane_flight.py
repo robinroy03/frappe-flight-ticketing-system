@@ -24,15 +24,16 @@ class AirplaneFlight(WebsiteGenerator):
 	def before_submit(self):
 		self.status = "Completed"
 
-	def on_update(self):
-		doc_before_save = self.get_doc_before_save()
+	# def on_refresh(self):
 
-		# Check if doc_before_save exists and if gate_number actually changed
-		if doc_before_save and doc_before_save.gate_number != self.gate_number:
-			frappe.enqueue(
-				"airplane_mode.utils.background_jobs.update_gate_in_tickets",
-				flight_name=self.name,
-				new_gate=self.gate_number,
-				queue="short",
-				job_name=f"update_gate_for_flight_{self.name}",
-			)
+	def on_update(self):
+		print("waiting\n\n\n\n")
+		frappe.log(f"\n\n\n\nUpdating gate number for flight {self.name} to {self.gate_number}")
+		frappe.enqueue(
+			"airplane_mode.utils.background_jobs.update_gate_in_tickets",
+			flight_name=self.name,
+			new_gate=self.gate_number,
+			queue="short",
+			at_front=True,
+			job_name=f"update_gate_for_flight_{self.name}",
+		)
